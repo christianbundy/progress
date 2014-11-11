@@ -2,7 +2,7 @@ Lifts = new Meteor.Collection('lifts');
 
 var settings = {
   minimum: 45,
-  delta: 2.5,
+  delta: 5,
 }
 
 var warmup = [
@@ -121,10 +121,10 @@ if (Meteor.isClient) {
       Session.set('workout', this.name);
     },
     'click .sets .inc': function () {
-      Meteor.call('changeWeight', this.name, 2.5);
+      Meteor.call('changeWeight', this.name, settings.delta);
     },
     'click .sets .dec': function () {
-      Meteor.call('changeWeight', this.name, -2.5);
+      Meteor.call('changeWeight', this.name, settings.delta * -1);
     }
   });
 }

@@ -1,4 +1,8 @@
 /* CSS declarations go here */
 .ctrl {
   cursor: pointer;
+  padding: 2rem;
+  margin-top: -2rem;
+  margin-left: -2rem;
+  margin-right: -2rem;
 }

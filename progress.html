@@ -3,38 +3,49 @@
 </head>
 
 <body>
-  <h1>Progress</h1>
-
-  {{> progress}}
+  <div class="container">
+    {{> progress}}
+  </div>
 </body>
 
 <template name="progress">
-  <div class="workouts">
-    <h2>Workouts</h2>
+  <br>
+  <div class="workouts text-center">
     {{#each workouts}}
       {{#if this.current}}
-        <button class="day" disabled>
+        <button class="btn btn-primary day" disabled>
           {{this.name}}
         </button>
         {{else}}
-        <button class="day">
+        <button class="btn btn-primary day">
           {{this.name}}
         </button>
       {{/if}}
     {{/each}}
   </div>
+  <br>
   <div class="sets">
-    <h2>Sets</h2>
     {{#each lifts}}
-      <h3>
-        <button class="dec">-</button>
-        {{this.name}}
-        <button class="inc">+</button>
-      </h3>
-      {{#each workout}}
-        {{this.sets}} x {{this.reps}} x {{this.wght}} lbs
-        <br>
-      {{/each}}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">
+            <div class="pull-left ctrl dec">
+              <span class="glyphicon glyphicon-minus"></span>       
+            </div>
+            {{this.name}} 
+            <div class="pull-right ctrl inc">
+              <span class="glyphicon glyphicon-plus"></span>       
+            </div>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <ul class="list-group">
+            {{#each workout}}
+              <li class="list-group-item">{{this.sets}} x {{this.reps}} x {{this.wght}} lbs</li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
     {{/each}}
   </div>
 </template>

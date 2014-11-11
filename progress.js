@@ -120,10 +120,10 @@ if (Meteor.isClient) {
     'click .workouts button.day': function () {
       Session.set('workout', this.name);
     },
-    'click .sets button.inc': function () {
+    'click .sets .inc': function () {
       Meteor.call('changeWeight', this.name, 2.5);
     },
-    'click .sets button.dec': function () {
+    'click .sets .dec': function () {
       Meteor.call('changeWeight', this.name, -2.5);
     }
   });

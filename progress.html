@@ -5,10 +5,36 @@
 <body>
   <h1>Progress</h1>
 
-  {{> hello}}
+  {{> progress}}
 </body>
 
-<template name="hello">
-  <button>Progress</button>
-  <p>You've progressed {{counter}} times.</p>
+<template name="progress">
+  <div class="workouts">
+    <h2>Workouts</h2>
+    {{#each workouts}}
+      {{#if this.current}}
+        <button class="day" disabled>
+          {{this.name}}
+        </button>
+        {{else}}
+        <button class="day">
+          {{this.name}}
+        </button>
+      {{/if}}
+    {{/each}}
+  </div>
+  <div class="sets">
+    <h2>Sets</h2>
+    {{#each lifts}}
+      <h3>
+        <button class="dec">-</button>
+        {{this.name}}
+        <button class="inc">+</button>
+      </h3>
+      {{#each workout}}
+        {{this.sets}} x {{this.reps}} x {{this.wght}} lbs
+        <br>
+      {{/each}}
+    {{/each}}
+  </div>
 </template>

@@ -132,13 +132,19 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.methods({
     'changeWeight': function (liftName, delta) {
-      Lifts.update({
+      var filter = {
         name: liftName
-      }, {
-        $inc: {
-          wght: delta,
-        }
-      });
+      };
+
+      var currentWeight = Lifts.findOne(filter).wght;
+
+      if (currentWeight + delta >= settings.minimum) {
+        Lifts.update(filter, {
+          $inc: {
+            wght: delta,
+          }
+        });
+      }
     }
   });
 }
